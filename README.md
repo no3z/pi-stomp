@@ -1,7 +1,7 @@
 # Changes:
 ### ILI9486
 
-Download: https://github.com/ustropo/Python_ILI9486.git and https://github.com/adafruit/Adafruit_Python_GPIO.git
+Download: https://github.com/ustropo/Python_ILI9486.git and https://github.com/adafruit/Adafruit_Python_GPIO.git and install all needed libraries for those packages.
 
 On Adafruit GPIO remove the following line:
 ```
@@ -17,7 +17,11 @@ Then install both using: python3 setup.py install
 
 ### Joystick
 
-A SNES type joystick is already configured, connected to the /dev/input/event0 filesystem
+First we need to install the evdev package:
+
+``` pip3 install evdev ```
+
+A SNES type joystick is already configured in the 'pistomp/joystick_input.py' file, connected to the /dev/input/event0 filesystem
 
 The keypad is configured as the top universal encoder and the SELECT and START buttons are the LONGPRESSED and RELEASED encoder switch buttons.
 
