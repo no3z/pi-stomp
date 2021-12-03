@@ -24,20 +24,24 @@ hardware:
   #
   footswitches:
   - id: 0
-    debounce_input: 2
+    debounce_input: 0
     midi_CC: 60
-    bypass: LEFT
-    preset: UP
+    color: green
   - id: 1
-    debounce_input: 3
-    #gpio_output: 13
-    midi_CC: 62
-    color: lime
+    debounce_input: 1
+    midi_CC: 61
+    color: yellow
   - id: 2
-    debounce_input: 4
-    #gpio_output: 26
-    midi_CC: 63
+    debounce_input: 2
+    midi_CC: 62
     color: blue
+  - id: 3
+    debounce_input: 3
+    midi_CC: 63
+    color: red
+  - id: 4
+    debounce_input: 4
+    preset: UP
 
   # analog control definition
   #   adc_input: adc chip pin to which control is connected

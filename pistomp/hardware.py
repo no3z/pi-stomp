@@ -50,7 +50,8 @@ class Hardware:
         self.footswitches = []
         self.encoder_switches = []
         self.debounce_map = None
-
+        self.joystick = None
+        
     def init_spi(self):
         self.spi = spidev.SpiDev()
         self.spi.open(0, 1)  # Bus 0, CE1
@@ -72,7 +73,9 @@ class Hardware:
             s.poll()
         for s in self.footswitches:
             s.poll()
-
+        if self.joystick:
+            self.joystick.read_joystick()
+            
     def reinit(self, cfg):
         # reinit hardware as specified by the new cfg context (after pedalboard change, etc.)
         self.cfg = self.default_cfg.copy()

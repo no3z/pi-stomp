@@ -33,7 +33,10 @@ import pistomp.footswitch as Footswitch
 import pistomp.hardware as hardware
 import pistomp.relay as Relay
 
-import pistomp.lcdili9341 as Lcd
+import pistomp.joystick_input as JoyStick
+
+import pistomp.lcdili9486 as Lcd
+
 #import pistomp.lcd128x64 as Lcd
 #import pistomp.lcd135x240 as Lcd
 #import pistomp.lcdsy7789 as Lcd
@@ -50,6 +53,7 @@ RELAY_SET_PIN = 12
 # Map of Debounce chip pin (user friendly) to GPIO (code friendly)
 DEBOUNCE_MAP = {0: 27, 1: 23, 2: 22, 3: 24, 4: 25}
 
+JOYSTICK_DEVICE = "/dev/input/event0"
 
 class Pistompcore(hardware.Hardware):
     __single = None
@@ -63,7 +67,7 @@ class Pistompcore(hardware.Hardware):
         self.mod = mod
         self.midiout = midiout
         self.debounce_map = DEBOUNCE_MAP
-
+        
         GPIO.setmode(GPIO.BCM)
 
         self.init_spi()
@@ -78,11 +82,16 @@ class Pistompcore(hardware.Hardware):
 
         self.init_analog_controls()
 
+        self.init_joystick()
+        
         self.reinit(None)
 
     def init_lcd(self):
         self.mod.add_lcd(Lcd.Lcd(self.mod.homedir))
 
+    def init_joystick(self):
+        self.joystick = JoyStick.InputDeviceDispatcher(JOYSTICK_DEVICE,cb_enc_top=self.mod.universal_encoder_select,cb_enc_sw=self.mod.universal_encoder_sw,footswitches=self.footswitches)
+        
     def init_encoders(self):
         top_enc = Encoder.Encoder(TOP_ENC_PIN_D, TOP_ENC_PIN_CLK, callback=self.mod.universal_encoder_select)
         self.encoders.append(top_enc)
