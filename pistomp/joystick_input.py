@@ -1,4 +1,3 @@
-from asyncore import file_dispatcher, loop
 from evdev import InputDevice, categorize, ecodes
 from select import select
 import pistomp.encoderswitch as EncoderSwitch
