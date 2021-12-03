@@ -1,9 +1,9 @@
-#Changes:
+# Changes:
 ### ILI9486
 
 Download: https://github.com/ustropo/Python_ILI9486.git and https://github.com/adafruit/Adafruit_Python_GPIO.git
 
-On Adafruit GPIO Change the remove the following line:
+On Adafruit GPIO remove the following line:
 ```
 /Adafruit_GPIO/SPI.py
 @@ -43,7 +43,7 @@ class SpiDev(object):
@@ -18,6 +18,7 @@ Then install both using: python3 setup.py install
 ### Joystick
 
 A SNES type joystick is already configured, connected to the /dev/input/event0 filesystem
+
 The keypad is configured as the top universal encoder and the SELECT and START buttons are the LONGPRESSED and RELEASED encoder switch buttons.
 
 
