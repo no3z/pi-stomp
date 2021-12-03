@@ -4,14 +4,14 @@
 Download: https://github.com/ustropo/Python_ILI9486.git and https://github.com/adafruit/Adafruit_Python_GPIO.git
 
 On Adafruit GPIO Change the remove the following line:
-'''
-b/Adafruit_GPIO/SPI.py
+```
+/Adafruit_GPIO/SPI.py
 @@ -43,7 +43,7 @@ class SpiDev(object):
          self._device.max_speed_hz=max_speed_hz
          # Default to mode 0, and make sure CS is active low.
          self._device.mode = 0
 -        self._device.cshigh = False   <---- remove this line
-'''
+```
 
 Then install both using: python3 setup.py install
 
